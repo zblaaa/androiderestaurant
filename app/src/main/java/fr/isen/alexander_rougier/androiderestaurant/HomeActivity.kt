@@ -1,6 +1,7 @@
 package fr.isen.alexander_rougier.androiderestaurant
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -8,15 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -31,7 +24,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import fr.isen.alexander_rougier.androiderestaurant.ui.theme.AndroidERestaurantTheme
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +39,10 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         //color = MaterialTheme.colorScheme.background
                     ) {
-                        texteBienvenueEntrePlatsDessert(name = "John Doe")
+                        texteBienvenueEntrePlatsDessert(name = "John Doe"){
+                                category ->
+                            goToCategory(category)
+                        }
                     }
                 }
             }
@@ -52,14 +51,29 @@ class MainActivity : ComponentActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy() called")
+
+
+    }
+    private fun goToCategory (category: String){
+        Toast.makeText(
+            this,
+            "Vous avez cliquer sur $category",
+            Toast.LENGTH_SHORT
+        ).show()
+        val intent = Intent(this,CategoryActivity::class.java)
+        intent.putExtra("category", category)
+        startActivity(intent)
     }
 }
 
 
 
 @Composable
-fun texteBienvenueEntrePlatsDessert(name: String, modifier: Modifier = Modifier) {
+fun texteBienvenueEntrePlatsDessert(name: String, modifier: Modifier = Modifier, goToCategory: (String) -> Unit) {
     val context = LocalContext.current
+    val starters = context.getString(R.string.home_starters)
+    val dish = context.getString(R.string.home_dish)
+    val desserts = context.getString(R.string.home_desserts)
     Column {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -105,6 +119,7 @@ fun texteBienvenueEntrePlatsDessert(name: String, modifier: Modifier = Modifier)
                 .padding(vertical = 8.dp)
                 .fillMaxWidth() // Remplir la largeur de la ligne
                 .clickable {
+                    goToCategory(starters)
                     Toast
                         .makeText(
                             context,
@@ -134,7 +149,10 @@ fun texteBienvenueEntrePlatsDessert(name: String, modifier: Modifier = Modifier)
             modifier = Modifier.padding(vertical = 16.dp) // Marge verticale
                 .padding(vertical = 8.dp)
                 .fillMaxWidth() // Remplir la largeur de la ligne
+
                 .clickable {
+                    goToCategory(dish)
+
                     Toast
                         .makeText(
                             context,
@@ -163,6 +181,7 @@ fun texteBienvenueEntrePlatsDessert(name: String, modifier: Modifier = Modifier)
                 .padding(vertical = 8.dp)
                 .fillMaxWidth() // Remplir la largeur de la ligne
                 .clickable {
+                    goToCategory(desserts)
                     Toast
                         .makeText(
                             context,
@@ -174,4 +193,6 @@ fun texteBienvenueEntrePlatsDessert(name: String, modifier: Modifier = Modifier)
         )
     }
 }
+
+
 

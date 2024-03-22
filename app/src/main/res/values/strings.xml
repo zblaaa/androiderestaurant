@@ -1,4 +1,27 @@
 <resources>
     <string name="app_name">AndroidERestaurant</string>
     <string name="title_activity_plats">Plats</string>
+    <string name="home_starters">Entree</string>
+    <string name="home_dish">Plats</string>
+    <string name="home_desserts">Desserts</string>
+
+    <string-array name="fake_starters">
+        <item>Salade 1</item>
+        <item>Salade 2</item>
+        <item>Salade 3</item>
+    </string-array>
+
+    <string-array name="fake_dish">
+        <item>Dish 1</item>
+        <item>Dish 2</item>
+        <item>Dish 3</item>
+    </string-array>
+
+    <string-array name="fake_desserts">
+        <item>Desserts 1</item>
+        <item>Desserts 2</item>
+        <item>Desserts 3</item>
+    </string-array>
+    <string name="title_activity_detail">DetailActivity</string>
+
 </resources>

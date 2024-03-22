@@ -62,6 +62,8 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
+    implementation ("com.android.volley:volley:1.2.1")
+    implementation (libs.gson)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
