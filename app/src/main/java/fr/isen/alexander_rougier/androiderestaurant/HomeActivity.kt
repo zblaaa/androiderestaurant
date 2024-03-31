@@ -9,7 +9,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -24,8 +32,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import fr.isen.alexander_rougier.androiderestaurant.ui.theme.AndroidERestaurantTheme
 
 class MainActivity : ComponentActivity() {
@@ -149,10 +155,8 @@ fun texteBienvenueEntrePlatsDessert(name: String, modifier: Modifier = Modifier,
             modifier = Modifier.padding(vertical = 16.dp) // Marge verticale
                 .padding(vertical = 8.dp)
                 .fillMaxWidth() // Remplir la largeur de la ligne
-
                 .clickable {
                     goToCategory(dish)
-
                     Toast
                         .makeText(
                             context,

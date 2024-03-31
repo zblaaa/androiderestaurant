@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AndroidERestaurant</string>
     <string name="title_activity_plats">Plats</string>
-    <string name="home_starters">Entree</string>
+    <string name="home_starters">Entrées</string>
     <string name="home_dish">Plats</string>
     <string name="home_desserts">Desserts</string>
 

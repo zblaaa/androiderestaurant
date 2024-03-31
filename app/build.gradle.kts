@@ -47,6 +47,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {
@@ -63,6 +64,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
     implementation ("com.android.volley:volley:1.2.1")
+    implementation("io.coil-kt:coil-compose:2.6.0")
     implementation (libs.gson)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
